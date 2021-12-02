@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <title>Minecraft</title>
+  </head>
+  <body>
+    <div id="landing-page">
+      <img class="logo" src="Assets/Images/minecraft-logo.png" />
+      <button class="start-btn">Start</button>
+    </div>
+
+    <div id="game">
+      <div class="play-screen display-none"></div>
+      <div class="inventory display-none"></div>
+    </div>
+    <script src=".game.js" type="module"></script>
+  </body>
+</html>
+
+<!-- background:
+  
+  html:
+  grid (matrix)
+  
+  js:
+  divs inside the grid, will give them different classes with the img as background.
+
+  css:
+  class-sky: background img sky
+  class-dirt: background img dirt
+  class-leaves: background img leaves
+  class-tree: background img tree
+  class-cloud: background img cloud
+  class-grass: background img grass
+  class-stone: background img stone
+-->

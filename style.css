@@ -1,0 +1,86 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+@font-face {
+  font-family: "Minecraft";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Minecraft.woff") format("woff"),
+    url("/fonts/Minecraft.ttf") format("tff");
+}
+
+#landing-page {
+  background: url(../Assets/Images/dirt-block.png);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  height: 20%;
+}
+
+.start-btn {
+  padding: 1rem;
+  font-family: "Minecraft";
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+#game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-screen {
+  height: 100vh;
+  width: 100vmin;
+  background-color: skyblue;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+}
+
+.cloud {
+  background: white;
+}
+
+.dirt {
+  background: url(../Assets/Images/dirt-block.png) center center / cover
+    no-repeat;
+}
+
+.grass {
+  background: url(../Assets/Images/grass-block.png) center center / cover
+    no-repeat;
+}
+
+.log {
+  background: url(../Assets/Images/oak-log-block.png) center center / cover
+    no-repeat;
+}
+
+.stone {
+  background: url(../Assets/Images/stone-block.png) center center / cover
+    no-repeat;
+}
+
+.leaves {
+  background: url(../Assets/Images/leaves-block.png) center center / cover
+    no-repeat;
+}
+
+.display-none {
+  display: none !important;
+}
