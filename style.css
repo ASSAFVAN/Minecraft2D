@@ -31,24 +31,25 @@ body {
 }
 
 .sideBar__pickAxe {
-  background: url(../Assets/Images/pickaxe.png) center center / cover no-repeat;
+  background: url(../Assets/Images/pickaxe.png) center center / contain
+    no-repeat;
   height: 10%;
   margin-top: 2rem;
 }
 
 .sideBar__shovel {
-  background: url(../Assets/Images/shovel.png) center center / cover no-repeat;
+  background: url(../Assets/Images/shovel.png) center center / contain no-repeat;
   height: 10%;
   margin-top: 2rem;
 }
 
 .sideBar__axe {
-  background: url(../Assets/Images/axe.png) center center / cover no-repeat;
+  background: url(../Assets/Images/axe.png) center center / contain no-repeat;
   height: 10%;
   margin-top: 2rem;
 }
 
-.sideBar__inventory {
+#sideBar__inventory {
   height: 5%;
   width: 50%;
   align-self: center;
@@ -132,6 +133,8 @@ body {
 
 .btn {
   cursor: pointer;
+  /* color: white; */
+  font-family: "Minecraft";
 }
 
 .active {
