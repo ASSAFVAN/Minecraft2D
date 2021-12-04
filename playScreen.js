@@ -80,25 +80,19 @@ inventory.addEventListener("click", () => {
 // selecting the pickaxe
 pickAxe.addEventListener("click", () => {
   selectedTool = "pickaxe";
-  pickAxe.classList.add("active");
-  shovel.classList.remove("active");
-  axe.classList.remove("active");
+  activeTool(pickAxe, shovel, axe);
 });
 
 // selecting the shovel
 shovel.addEventListener("click", () => {
   selectedTool = "shovel";
-  shovel.classList.add("active");
-  pickAxe.classList.remove("active");
-  axe.classList.remove("active");
+  activeTool(shovel, pickAxe, axe);
 });
 
 // selecting the axe
 axe.addEventListener("click", () => {
   selectedTool = "axe";
-  axe.classList.add("active");
-  shovel.classList.remove("active");
-  pickAxe.classList.remove("active");
+  activeTool(axe, shovel, pickAxe);
 });
 
 // main eventlistener
@@ -106,12 +100,9 @@ playScreen.addEventListener("click", (e) => {
   switch (selectedTool) {
     case "pickaxe":
       if (e.target.classList.value === "stone") {
-        inventory.classList.add(`${e.target.classList.value}`);
-        e.target.classList.remove("stone");
-        e.target.classList.add("none");
-        isEmpty = false;
+        updatingElements(e);
       } else {
-        flashRed();
+        flashRed(pickAxe);
       }
       break;
 
@@ -120,13 +111,9 @@ playScreen.addEventListener("click", (e) => {
         e.target.classList.value === "dirt" ||
         e.target.classList.value === "grass"
       ) {
-        inventory.classList = "";
-        inventory.classList.add(`${e.target.classList.value}`);
-        e.target.classList.remove("dirt", "grass");
-        e.target.classList.add("none");
-        isEmpty = false;
+        updatingElements(e);
       } else {
-        flashRed();
+        flashRed(shovel);
       }
       break;
 
@@ -135,32 +122,35 @@ playScreen.addEventListener("click", (e) => {
         e.target.classList.value === "log" ||
         e.target.classList.value === "leaves"
       ) {
-        inventory.classList = "";
-        inventory.classList.add(`${e.target.classList.value}`);
-        e.target.classList.remove("log", "leaves");
-        e.target.classList.add("none");
-        isEmpty = false;
+        updatingElements(e);
       } else {
-        flashRed();
+        flashRed(axe);
       }
       break;
   }
 
   if (!isEmpty && clickedOnInventory) {
-    console.log(inventory.classList.value);
-    e.target.classList.add(`${inventory.classList.value}`);
+    let blockClass = `${inventory.classList.value}`;
+    e.target.classList.add("fade-in");
+    e.target.classList.add(blockClass);
+    setTimeout(function () {
+      e.target.classList.remove("fade-in");
+    }, 2000);
     e.target.classList.remove("none");
     resetInventory();
   }
 });
 
+// set the selected tool
+function activeTool(tool1, tool2, tool3) {
+  tool1.classList.add("active");
+  tool2.classList.remove("active");
+  tool3.classList.remove("active");
+}
+
 // inpropper tool detected
-function flashRed() {
+function flashRed(tool) {
   if (!isEmpty && clickedOnInventory) return;
-  let tool;
-  if (selectedTool === "pickaxe") tool = pickAxe;
-  if (selectedTool === "shovel") tool = shovel;
-  if (selectedTool === "axe") tool = axe;
   tool.classList.add("red");
   setTimeout(function () {
     tool.classList.remove("red");
@@ -182,4 +172,18 @@ function resetInventory() {
   inventory.classList = "";
   isEmpty = true;
   clickedOnInventory = false;
+}
+
+// adding fadeout animation, updating inventory and block classes, updating inventory status
+function updatingElements(event) {
+  inventory.classList = "";
+  let blockClass = `${event.target.classList.value}`;
+  inventory.classList.add(blockClass);
+  event.target.classList.add("fade-out");
+  setTimeout(function () {
+    event.target.classList.remove(blockClass);
+    event.target.classList.remove("fade-out");
+  }, 2000);
+  event.target.classList.add("none");
+  isEmpty = false;
 }
