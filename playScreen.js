@@ -32,7 +32,7 @@ const blocksMatrix = [
   [6, 4, 4, 4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 4, 6, 6, 6],
   [6, 6, 3, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 4, 4, 4, 6, 6],
   [6, 6, 3, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 3, 6, 6, 6],
-  [2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -50,8 +50,6 @@ function draw() {
     for (let j = 0; j < blocksMatrix[i].length; j++) {
       const block = document.createElement("div");
       block.classList.add(blocksObj[blocksMatrix[i][j]]);
-      block.setAttribute(`row`, i);
-      block.setAttribute(`column`, j);
       playScreen.appendChild(block);
     }
   }
@@ -156,8 +154,9 @@ playScreen.addEventListener("click", (e) => {
   }
 });
 
-// inproper tool detected
+// inpropper tool detected
 function flashRed() {
+  if (!isEmpty && clickedOnInventory) return;
   let tool;
   if (selectedTool === "pickaxe") tool = pickAxe;
   if (selectedTool === "shovel") tool = shovel;
